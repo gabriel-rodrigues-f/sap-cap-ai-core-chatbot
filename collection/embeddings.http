@@ -1,0 +1,14 @@
+@server = http://localhost:4004
+
+###
+GET {{server}}/embeddings/DocumentChunk
+Content-Type: application/json
+
+
+###
+POST {{server}}/embeddings/generate
+Content-Type: application/json
+
+{
+    "content": "Lab2dev é uma consultoria."
+}
