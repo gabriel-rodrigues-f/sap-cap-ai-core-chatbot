@@ -15,7 +15,7 @@ Este projeto é uma API baseada no SAP Cloud Application Programming Model (CAP)
 ##  Estrutura do Projeto
 
 ```plaintext
-CAP-AI-DEMO
+cap-ai-gabriel-marangoni
 │-- .github/
 │   ├── workflows/             # Configurações para CI/CD
 │-- collection/                # Arquivos de requisição HTTP para testes
