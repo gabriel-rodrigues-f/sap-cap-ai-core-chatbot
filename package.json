@@ -1,5 +1,5 @@
 {
-  "name": "rag-quick-start-app",
+  "name": "rag-quick-start-app-gabriel-marangoni",
   "version": "1.0.0",
   "description": "A simple CAP project.",
   "repository": "<Add your repository here>",
@@ -43,7 +43,7 @@
   "scripts": {
     "start": "cds-serve",
     "start:dev": "cds watch --profile hybrid",
-    "undeploy": "cf undeploy cap-ai-demo --delete-services --delete-service-keys --delete-service-brokers",
+    "undeploy": "cf undeploy cap-ai-gabriel-marangoni --delete-services --delete-service-keys --delete-service-brokers",
     "build": "rimraf resources mta_archives && mbt build --mtar archive",
     "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
   },
