@@ -1,5 +1,5 @@
 _schema-version: '3.1'
-ID: cap-ai-demo
+ID: cap-ai-gabriel-marangoni
 version: 1.0.0
 description: "A simple CAP project."
 parameters:
@@ -11,7 +11,7 @@ build-parameters:
         - npm install -f
         - npx cds build --production
 modules:
-  - name: cap-ai-demo-cap-srv
+  - name: cap-ai-gabriel-marangoni-cap-srv
     type: nodejs
     path: gen/srv
     parameters:
@@ -23,21 +23,21 @@ modules:
         properties:
           srv-url: ${default-url}
     requires:
-      - name: cap-ai-demo-cap-destination
-      - name: cap-ai-demo-cap-auth
-      - name: cap-ai-demo-cap-db
+      - name: cap-ai-gabriel-marangoni-cap-destination
+      - name: cap-ai-gabriel-marangoni-cap-auth
+      - name: cap-ai-gabriel-marangoni-cap-db
 
-  - name: cap-ai-demo-cap-db-deployer
+  - name: cap-ai-gabriel-marangoni-cap-db-deployer
     type: hdb
     path: gen/db
     parameters:
       buildpack: nodejs_buildpack
     requires:
-      - name: cap-ai-demo-cap-db
+      - name: cap-ai-gabriel-marangoni-cap-db
 
 resources:
 
-  - name: cap-ai-demo-cap-destination
+  - name: cap-ai-gabriel-marangoni-cap-destination
     type: org.cloudfoundry.managed-service
     parameters:
       config:
@@ -55,17 +55,17 @@ resources:
       service: destination
       service-plan: lite
 
-  - name: cap-ai-demo-cap-auth
+  - name: cap-ai-gabriel-marangoni-cap-auth
     type: org.cloudfoundry.managed-service
     parameters:
       service: xsuaa
       service-plan: application
       path: ./xs-security.json
       config:
-        xsappname: cap-ai-demo-${space}
+        xsappname: cap-ai-gabriel-marangoni-${space}
         tenant-mode: dedicated
 
-  - name: cap-ai-demo-cap-db
+  - name: cap-ai-gabriel-marangoni-cap-db
     type: com.sap.xs.hdi-container
     parameters:
       service: hana
