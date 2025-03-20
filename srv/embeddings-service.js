@@ -3,10 +3,10 @@ const repository = require("./repositories/DocumentChunkRepository");
 const bufferAdapter = require("./adapters/BufferAdapter");
 const splitterAdapter = require("./adapters/SplitterAdapter")
 
-module.exports = function () {
-  this.on('generate', async ({ data, _ }) => {
+module.exports = cds => {
+  cds.on("generate", async ({ data, _ }) => {
     try {
-      const { DocumentChunk } = this.entities;
+      const { DocumentChunk } = cds.entities;
       const { content } = data;
 
       const textChunks = await splitterAdapter.splitText(content);

@@ -1,9 +1,0 @@
-@server = http://localhost:4004
-
-###
-POST {{server}}/rag/generate
-Content-Type: application/json
-
-{
-    "prompt": "mais detalhes"
-}

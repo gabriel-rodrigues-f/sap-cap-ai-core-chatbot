@@ -1,0 +1,10 @@
+@server = http://localhost:4004
+
+###
+POST {{server}}/chat/generate
+Content-Type: application/json
+
+{
+   "conversationId": "78b53287-17ce-49db-9445-e3eec47828ac",
+   "prompt": "A quais informações você tem acesso"
+}

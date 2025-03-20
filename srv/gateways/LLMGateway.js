@@ -1,4 +1,4 @@
-const cds = require('@sap/cds');
+const cds = require("@sap/cds");
 
 class LLMGateway {
     _PLUGIN_NAME = "cap-llm-plugin";
@@ -7,15 +7,15 @@ class LLMGateway {
     _EMBEDDING_MODEL_CONFIG = cds.env.requires["gen-ai-hub"][this._EMBEDDING_MODEL_NAME];
     _CHAT_MODEL_NAME = "gpt-4-gabriel";
     _CHAT_MODEL_CONFIG = cds.env.requires["gen-ai-hub"][this._CHAT_MODEL_NAME];
-    _TABLE_NAME="CAP_AI_DEMO_DOCUMENTCHUNK";
-    _EMBEDDING_COLUMN="EMBEDDING";
-    _CONTENT_COLUMN="TEXT_CHUNK";
+    _TABLE_NAME = "CAP_AI_DEMO_DOCUMENTCHUNK";
+    _EMBEDDING_COLUMN = "EMBEDDING";
+    _CONTENT_COLUMN = "TEXT_CHUNK";
 
     async _connect() {
         return await cds.connect.to(this._PLUGIN_NAME);
     };
 
-    async getRAG ({ query }) {
+    async getRAG({ query }) {
         const connection = await this._connect();
         return await connection.getRagResponseWithConfig(
             query,
@@ -30,7 +30,7 @@ class LLMGateway {
         );
     };
 
-    async getEmbeddings({ chunk }){
+    async getEmbeddings({ chunk }) {
         const connection = await this._connect();
         return await connection.getEmbeddingWithConfig(this._EMBEDDING_MODEL_CONFIG, chunk)
     }
