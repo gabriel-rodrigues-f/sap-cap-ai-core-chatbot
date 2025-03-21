@@ -1,19 +1,20 @@
 namespace cap.ai.demo;
 
 using {
-    cuid,
     managed
 } from '@sap/cds/common';
 
-entity Conversation : cuid, managed {
-    USER     : String(50);
-    TITLE    : String(50);
-    MESSAGES : Composition of many Message
-                   on MESSAGES.CONVERSATION = $self;
+entity Conversation : managed {
+    key id       : UUID;
+        user     : String(50) @mandatory;
+        title    : String(50) @mandatory;
+        messages : Composition of many Message
+                       on messages.conversation = $self;
 }
 
-entity Message : cuid, managed {
-    CONVERSATION : Association to Conversation;
-    ROLE         : String(50);
-    CONTENT      : LargeString;
+entity Message : managed {
+    key id           : UUID;
+        conversation : Association to Conversation;
+        role         : String(50)  @mandatory;
+        content      : LargeString @mandatory;
 }

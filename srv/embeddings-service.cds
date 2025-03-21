@@ -5,7 +5,7 @@ service EmbeddingService @(path: '/embeddings') {
   entity DocumentChunk as
     projection on db.DocumentChunk
     excluding {
-      EMBEDDING
+      embedding
     };
 
   action generate(content : String) returns String;

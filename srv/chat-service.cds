@@ -2,8 +2,11 @@ using {cap.ai.demo as entities} from '../db/Conversation';
 
 service ChatService @(path: '/chat') {
 
-    entity Conversation as projection on entities.Conversation;
-    entity Message      as projection on entities.Message;
+    entity Conversation as
+        projection on entities.Conversation;
+
+    entity Message      as
+        projection on entities.Message;
 
     type ConversationType {
         id : UUID;
