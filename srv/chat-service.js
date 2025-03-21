@@ -4,21 +4,25 @@ const repository = require("./repositories/ConversationRepository");
 module.exports = cds => {
     cds.on("generate", async ({ data, _ }) => {
         try {
-            const { conversationId, prompt } = data;
+            const timestamp = new Date().toISOString();
+            const { conversation, prompt } = data;
             await repository.insertMessage({
-                conversationId,
+                conversationId: conversation.id,
                 role: "user",
                 content: prompt
             })
             const { completion } = await gateway.getRAG({ query: prompt });
-            const response = {
-                conversationId,
-                role: completion.choices[0].message.role,
+            await repository.insertMessage({
+                conversationId: conversation.id,
+                role: "assistant",
                 content: completion.choices[0].message.content
-            };
-            await repository.insertMessage(response);
-            await repository.updateConversation({ id: conversationId, data: { modifiedAt: new Date().toISOString() } });
-            _.res.status(201).json(response);
+            });
+            await repository.updateConversation({ id: conversation.id, data: { modifiedAt: timestamp } });
+            _.res.status(201).json({
+                timestamp,
+                role: "assistant",
+                content: completion.choices[0].message.content
+            });
         } catch ({ message, stack }) {
             console.error(stack);
             _.res.status(500).json({ message: "Internal Server Error" });

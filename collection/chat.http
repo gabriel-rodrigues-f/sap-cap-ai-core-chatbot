@@ -5,7 +5,9 @@ POST {{server}}/chat/generate
 Content-Type: application/json
 
 {
-   "conversationId": "499122f8-c2f4-4f23-9edc-f3a5474f62e4",
+   "conversation": {
+      "id": "425f3d88-24cf-4ba2-8100-dd5fa9f32a83"
+   },
    "prompt": "Como desenvolver uma API em CAP"
 }
 
@@ -23,7 +25,7 @@ GET {{server}}/chat/Conversation?$expand=MESSAGES
 Content-Type: application/json
 
 ###   CONVERSATION
-DELETE {{server}}/chat/Conversation(be6de41f-e435-4077-82c1-998dda24256b)
+DELETE {{server}}/chat/Conversation(2d90578c-2469-4e46-89b5-15e12be452bb)
 Content-Type: application/json
 
 ###   MESSAGES
@@ -31,7 +33,7 @@ GET {{server}}/chat/Message
 Content-Type: application/json
 
 ###   MESSAGES
-DELETE {{server}}/chat/Message(b4ac5cd9-6234-4cf4-929e-87973f80fb9f)
+DELETE {{server}}/chat/Message(ebd5aec6-4bdd-45d4-884c-6afc2066537d)
 Content-Type: application/json
 
 ###   MESSAGES

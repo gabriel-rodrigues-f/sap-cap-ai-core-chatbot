@@ -37,7 +37,7 @@ class ConversationRepository {
         }
         return await INSERT
             .into(this._MESSAGE)
-            .entries([message]);
+            .entries([message])
     };
 
     async deleteMessage(id) {
