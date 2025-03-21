@@ -12,13 +12,13 @@ service ChatService @(path: '/chat') {
         id : UUID;
     }
 
-    type MessageType {
+    type MessateType {
         id : UUID;
     }
 
-    type ChatProperties {
+    type chatProperties {
         conversation : ConversationType;
-        message      : MessageType;
+        message      : MessateType;
         prompt       : String
     }
 
@@ -28,5 +28,5 @@ service ChatService @(path: '/chat') {
         content   : String;
     }
 
-    action generate(conversation : ConversationType, message : MessageType, prompt : String) returns ChatResponse;
+    action generate(conversation : ConversationType, message : MessateType, prompt : String) returns ChatResponse;
 }

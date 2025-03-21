@@ -1,9 +1,9 @@
-using {cap.ai.demo as db} from '../db/DocumentChunk';
+using {cap.ai.demo as entities} from '../db/DocumentChunk';
 
-service EmbeddingService @(path: '/embeddings') {
+service embeddingsService @(path: '/embeddings') {
 
-  entity DocumentChunk as
-    projection on db.DocumentChunk
+  entity documentChunk as
+    projection on entities.DocumentChunk
     excluding {
       embedding
     };

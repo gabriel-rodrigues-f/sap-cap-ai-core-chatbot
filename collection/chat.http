@@ -21,7 +21,7 @@ Content-Type: application/json
 }
 
 ###   CONVERSATION
-GET {{server}}/chat/Conversation?$expand=MESSAGES
+GET {{server}}/chat/Conversation?$expand=messages
 Content-Type: application/json
 
 ###   CONVERSATION
