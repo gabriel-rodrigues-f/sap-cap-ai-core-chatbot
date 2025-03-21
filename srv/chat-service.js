@@ -1,30 +1,24 @@
 const gateway = require("./gateways/LLMGateway");
 const repository = require("./repositories/ConversationRepository");
-const { v4 } = require("uuid");
 
 module.exports = cds => {
     cds.on("generate", async ({ data, _ }) => {
         try {
             const { conversationId, prompt } = data;
-            const { Conversation, Message } = cds.entities;
+            await repository.insertMessage({
+                conversationId,
+                role: "user",
+                content: prompt
+            })
             const { completion } = await gateway.getRAG({ query: prompt });
-
-            const message = {
-                conversationId: conversationId,
-                id: v4(),
+            const response = {
+                conversationId,
                 role: completion.choices[0].message.role,
                 content: completion.choices[0].message.content
             };
-            await repository.insertMessage({
-                entity: Message,
-                message
-            });
-            await repository.updateConversation({
-                entity: Conversation,
-                id: conversationId,
-                timestamp: new Date().toISOString()
-            });
-            _.res.status(201).json(message);
+            await repository.insertMessage(response);
+            await repository.updateConversation({ id: conversationId, data: { modifiedAt: new Date().toISOString() } });
+            _.res.status(201).json(response);
         } catch ({ message, stack }) {
             console.error(stack);
             _.res.status(500).json({ message: "Internal Server Error" });
@@ -34,9 +28,8 @@ module.exports = cds => {
     cds.on("DELETE", "Conversation", async ({ data, _ }) => {
         try {
             const { ID } = data;
-            const { Conversation, Message } = cds.entities;
-            await cds.run(DELETE.from(Message).where({ CONVERSATION_ID: ID }));
-            await cds.run(DELETE.from(Conversation).where({ ID }));
+            await repository.deleteMessage(ID);
+            await repository.deleteConversation(ID);
             return _.res.status(204).json();
         } catch ({ message, stack }) {
             console.error(stack);

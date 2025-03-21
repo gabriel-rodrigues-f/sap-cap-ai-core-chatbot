@@ -1,10 +1,45 @@
 @server = http://localhost:4004
 
-###
+###   CHAT/GENERATE
 POST {{server}}/chat/generate
 Content-Type: application/json
 
 {
-   "conversationId": "78b53287-17ce-49db-9445-e3eec47828ac",
-   "prompt": "A quais informações você tem acesso"
+   "conversationId": "499122f8-c2f4-4f23-9edc-f3a5474f62e4",
+   "prompt": "Como desenvolver uma API em CAP"
+}
+
+###   CONVERSATION
+POST {{server}}/chat/Conversation
+Content-Type: application/json
+
+{
+   "USER": "gabriel.freire@lab2dev.com",
+   "TITLE": "How to develop a CAP API using SAP BTP BAS"
+}
+
+###   CONVERSATION
+GET {{server}}/chat/Conversation?$expand=MESSAGES
+Content-Type: application/json
+
+###   CONVERSATION
+DELETE {{server}}/chat/Conversation(be6de41f-e435-4077-82c1-998dda24256b)
+Content-Type: application/json
+
+###   MESSAGES
+GET {{server}}/chat/Message
+Content-Type: application/json
+
+###   MESSAGES
+DELETE {{server}}/chat/Message(b4ac5cd9-6234-4cf4-929e-87973f80fb9f)
+Content-Type: application/json
+
+###   MESSAGES
+POST {{server}}/chat/Message
+Content-Type: application/json
+
+{
+   "CONVERSATION_ID": "499122f8-c2f4-4f23-9edc-f3a5474f62e4",
+   "ROLE": "user",
+   "CONTENT": "How to develop a CAP API using SAP BTP BAS"
 }

@@ -21,10 +21,8 @@ service ChatService @(path: '/chat') {
         conversationId   : String;
         messageId        : String;
         messageCreatedAt : Timestamp;
-        userId           : String;
         prompt           : String
     }
 
-    action generate(conversationId : String, prompt : String) returns ChatResponse;
-    action delete(conversationId : String)                    returns String;
+    action generate(conversationId : String, messageId : String, timestamp : Timestamp, prompt : String) returns ChatResponse;
 }
