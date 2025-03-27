@@ -1,0 +1,36 @@
+@server = http://localhost:4004
+
+@randomName = {{$guid}}
+@randomPrice = {{$randomInt 50 200}}.{{$randomInt 10 99}}
+@randomStock = {{$randomInt 1 100}}
+
+###
+GET {{server}}/products/Product
+Content-Type: application/json
+
+###
+POST {{server}}/products/Product
+Content-Type: application/json
+
+{
+    "name": "Automotive Engine",
+    "price": {{randomPrice}},
+    "stock": {{randomStock}}
+}
+
+###
+GET {{server}}/products/Product(c02ee4f1-0286-470e-9541-8b453ca5a651")
+Content-Type: application/json
+
+###
+PATCH {{server}}/products/Product(c02ee4f1-0286-470e-9541-8b453ca5a651")
+Content-Type: application/json
+
+{
+    "price": {{randomPrice}},
+    "stock": {{randomStock}}
+}
+
+###
+DELETE {{server}}/products/Product(c02ee4f1-0286-470e-9541-8b453ca5a651)
+Content-Type: application/json

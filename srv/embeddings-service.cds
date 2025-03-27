@@ -1,6 +1,6 @@
 using {cap.ai.demo as entities} from '../db/DocumentChunk';
 
-service embeddingsService @(path: '/embeddings') {
+service EmbeddingsService @(path: '/embeddings') {
 
   entity documentChunk as
     projection on entities.DocumentChunk

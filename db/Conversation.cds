@@ -14,7 +14,7 @@ entity Conversation : managed {
 
 entity Message : managed {
     key id           : UUID;
-        conversation : Association to Conversation;
+        conversation : Association to Conversation @assert.target;
         role         : String(50)  @mandatory;
         content      : LargeString @mandatory;
 }

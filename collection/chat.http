@@ -8,16 +8,20 @@ Content-Type: application/json
    "conversation": {
       "id": "425f3d88-24cf-4ba2-8100-dd5fa9f32a83"
    },
-   "prompt": "Como desenvolver uma API em CAP"
+   "prompt": "Me liste o nome dos produtos no banco de dados"
 }
+
+###   CONVERSATION
+GET {{server}}/chat/Conversation
+Content-Type: application/json
 
 ###   CONVERSATION
 POST {{server}}/chat/Conversation
 Content-Type: application/json
 
 {
-   "USER": "gabriel.freire@lab2dev.com",
-   "TITLE": "How to develop a CAP API using SAP BTP BAS"
+   "user": "gabriel.freire@lab2dev.com",
+   "title": "How to develop a CAP API using SAP BTP BAS"
 }
 
 ###   CONVERSATION
@@ -41,7 +45,7 @@ POST {{server}}/chat/Message
 Content-Type: application/json
 
 {
-   "CONVERSATION_ID": "499122f8-c2f4-4f23-9edc-f3a5474f62e4",
-   "ROLE": "user",
-   "CONTENT": "How to develop a CAP API using SAP BTP BAS"
+   "conversation_id": "499122f8-c2f4-4f23-9edc-f3a5474f62e4",
+   "role": "user",
+   "content": "How to develop a CAP API using SAP BTP BAS"
 }
