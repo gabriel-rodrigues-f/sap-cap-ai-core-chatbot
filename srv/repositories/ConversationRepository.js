@@ -14,26 +14,26 @@ class ConversationRepository {
     async updateConversation({ data, id }) {
         return await UPDATE(this._CONVERSATION)
             .set(data)
-            .where({ ID: id });
+            .where({ id });
     };
 
     async deleteConversation(id) {
         return await cds.run(DELETE
             .from(this._CONVERSATION)
-            .where({ ID: id }));
+            .where({ id }));
     }
 
     async loadMessages(id) {
         return await SELECT(this._MESSAGE)
-            .where({ CONVERSATION_ID: id })
+            .where({ conversation_id: id })
             .orderBy("updatedAt");
     };
 
     async insertMessage({ conversationId, role, content }) {
         const message = {
-            CONVERSATION_ID: conversationId,
-            ROLE: role,
-            CONTENT: content
+            conversation_id: conversationId,
+            role,
+            content
         }
         return await INSERT
             .into(this._MESSAGE)
@@ -43,7 +43,7 @@ class ConversationRepository {
     async deleteMessage(id) {
         return await cds.run(DELETE
             .from(this._MESSAGE)
-            .where({ CONVERSATION_ID: id }));
+            .where({ conversation_id: id }));
     }
 };
 

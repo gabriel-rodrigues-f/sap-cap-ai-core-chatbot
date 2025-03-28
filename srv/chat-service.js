@@ -42,9 +42,10 @@ module.exports = function() {
 
     this.on("DELETE", "Conversation", async ({ data, _ }) => {
         try {
-            const { ID } = data;
-            await repository.deleteMessage(ID);
-            await repository.deleteConversation(ID);
+            const { id } = data;
+            console.log(id)
+            await repository.deleteMessage(id);
+            await repository.deleteConversation(id);
             return _.res.status(204).json();
         } catch ({ message, stack }) {
             console.error(stack);

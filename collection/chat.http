@@ -29,7 +29,7 @@ GET {{server}}/chat/Conversation?$expand=messages
 Content-Type: application/json
 
 ###   CONVERSATION
-DELETE {{server}}/chat/Conversation(2d90578c-2469-4e46-89b5-15e12be452bb)
+DELETE {{server}}/chat/Conversation(baedffbe-3e98-49b3-944c-72a2b8d42b8f)
 Content-Type: application/json
 
 ###   MESSAGES
@@ -37,7 +37,7 @@ GET {{server}}/chat/Message
 Content-Type: application/json
 
 ###   MESSAGES
-DELETE {{server}}/chat/Message(ebd5aec6-4bdd-45d4-884c-6afc2066537d)
+DELETE {{server}}/chat/Message(baedffbe-3e98-49b3-944c-72a2b8d42b8f)
 Content-Type: application/json
 
 ###   MESSAGES
