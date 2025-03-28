@@ -6,7 +6,7 @@ Content-Type: application/json
 
 {
    "conversation": {
-      "id": "425f3d88-24cf-4ba2-8100-dd5fa9f32a83"
+      "id": "02edb01d-e895-49aa-bfac-aaf6b83bbe12"
    },
    "prompt": "Me liste o nome dos produtos no banco de dados"
 }
@@ -29,7 +29,7 @@ GET {{server}}/chat/Conversation?$expand=messages
 Content-Type: application/json
 
 ###   CONVERSATION
-DELETE {{server}}/chat/Conversation(baedffbe-3e98-49b3-944c-72a2b8d42b8f)
+DELETE {{server}}/chat/Conversation(d3e6a593-c98b-448a-860b-1b4ec8619ccd)
 Content-Type: application/json
 
 ###   MESSAGES

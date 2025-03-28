@@ -3,13 +3,13 @@ const repository = require("./repositories/ConversationRepository");
 const prompts = require("./config/prompts");
 const cds = require('@sap/cds');
 
-module.exports = function() {
+module.exports = function () {
     this.on("generate", async ({ data, _ }) => {
         try {
             const timestamp = new Date().toISOString();
             const { conversation, prompt } = data;
-           const r = await repository.insertMessage({
-                conversationId: conversation.id,
+            await repository.insertMessage({
+                conversation_id: conversation.id,
                 role: "user",
                 content: prompt
             });
@@ -20,11 +20,11 @@ module.exports = function() {
             const generatedQuery = chatRAGResponseQuery.completion.choices[0].message.content.replace(/(```sql|```$)/gm, '');
             const result = await cds.run(generatedQuery);
             const chatRAGResponseResult = await gateway.getRAG({
-                query:  `${prompt}: \n\n ${JSON.stringify(result, null, 2)}`,
+                query: `${prompt}: \n\n ${JSON.stringify(result, null, 2)}`,
                 promptContext: prompts.response
             });
             await repository.insertMessage({
-                conversationId: conversation.id,
+                conversation_id: conversation.id,
                 role: "assistant",
                 content: chatRAGResponseResult.completion.choices[0].message.content
             });

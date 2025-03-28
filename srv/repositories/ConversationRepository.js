@@ -29,15 +29,10 @@ class ConversationRepository {
             .orderBy("updatedAt");
     };
 
-    async insertMessage({ conversationId, role, content }) {
-        const message = {
-            conversation_id: conversationId,
-            role,
-            content
-        }
+    async insertMessage({ conversation_id, role, content }) {
         return await INSERT
             .into(this._MESSAGE)
-            .entries([message])
+            .entries([{ conversation_id, role, content }])
     };
 
     async deleteMessage(id) {
