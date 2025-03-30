@@ -22,7 +22,6 @@ module.exports = function () {
                 user,
                 title: chatRAGResponseChatTitle.completion.choices[0].message.content
             });
-            console.log(JSON.stringify(conversation.results[0].values[6]))
             const conversationId = conversation.results[0].values[6];
             await repository.insertMessage({
                 conversation_id: conversationId,
@@ -48,7 +47,7 @@ module.exports = function () {
             _.res.status(201).json({
                 conversationId,
                 messageId: assistantResponse.results[0].values[6],
-                timestamp,
+                createdAt: assistantResponse.results[0].values[3],
                 role: ROLES_ENUM.ASSISTANT,
                 content: chatRAGResponseResult.completion.choices[0].message.content
             });

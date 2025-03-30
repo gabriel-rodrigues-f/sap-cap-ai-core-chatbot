@@ -1,12 +1,16 @@
 @server = http://localhost:4004
 
+###   METADATA
+GET {{server}}/chat/$metadata
+Content-Type: application/json
+
 ###   CHAT/GENERATE
 POST {{server}}/chat/generate
 Content-Type: application/json
 
 {
    "user": "mail@mail.com",
-   "content": "Qual é o preço do produto?"
+   "content": "Qual é o nome do produto no banco de dados?"
 }
 
 ###   CONVERSATION
@@ -27,7 +31,7 @@ GET {{server}}/chat/Conversation?$expand=messages
 Content-Type: application/json
 
 ###   CONVERSATION
-DELETE {{server}}/chat/Conversation(af1af5e4-1223-48f7-8a6b-3830146c3633)
+DELETE {{server}}/chat/Conversation(bf48a641-474c-47ec-b4f3-b2b3dc1af7a6)
 Content-Type: application/json
 
 ###   MESSAGES
