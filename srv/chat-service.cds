@@ -2,31 +2,16 @@ using {cap.ai.demo as entities} from '../db/Conversation';
 
 service ChatService @(path: '/chat') {
 
-    entity Conversation as
-        projection on entities.Conversation;
-
-    entity Message      as
-        projection on entities.Message;
-
-    type ConversationType {
-        id : UUID;
-    }
-
-    type MessateType {
-        id : UUID;
-    }
-
-    type chatProperties {
-        conversation : ConversationType;
-        message      : MessateType;
-        prompt       : String
-    }
+    entity Conversation as projection on entities.Conversation;
+    entity Message      as projection on entities.Message;
 
     type ChatResponse {
-        timestamp : String;
-        role      : String;
-        content   : String;
+        conversationId : UUID;
+        messageId      : UUID;
+        title          : String;
+        content        : String;
+        timestamp      : String;
     }
 
-    action generate(conversation : ConversationType, message : MessateType, prompt : String) returns ChatResponse;
+    action generate(content : String, user : String) returns ChatResponse;
 }

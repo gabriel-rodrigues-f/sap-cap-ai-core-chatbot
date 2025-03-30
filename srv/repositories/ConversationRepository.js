@@ -5,10 +5,10 @@ class ConversationRepository {
     _CONVERSATION = cds.entities.Conversation;
     _MESSAGE = cds.entities.Message;
 
-    async insertConversation(data) {
+    async insertConversation({ user, title }) {
         return await INSERT
             .into(this._CONVERSATION)
-            .entries([data]);
+            .entries([{ user, title }]);
     }
 
     async updateConversation({ data, id }) {
@@ -23,9 +23,9 @@ class ConversationRepository {
             .where({ id }));
     }
 
-    async loadMessages(id) {
+    async loadMessages(conversation_id) {
         return await SELECT(this._MESSAGE)
-            .where({ conversation_id: id })
+            .where({ conversation_id })
             .orderBy("updatedAt");
     };
 
@@ -35,10 +35,10 @@ class ConversationRepository {
             .entries([{ conversation_id, role, content }])
     };
 
-    async deleteMessage(id) {
+    async deleteMessage(conversation_id) {
         return await cds.run(DELETE
             .from(this._MESSAGE)
-            .where({ conversation_id: id }));
+            .where({ conversation_id }));
     }
 };
 

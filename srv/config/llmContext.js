@@ -1,5 +1,5 @@
 module.exports = {
-  request: `
+  sql: `
 ### Regras para geração da query SQL:
 Restrições:
 - **Retorne apenas a query SQL, sem explicações adicionais.**
@@ -16,7 +16,11 @@ key id    : UUID;
     price : Decimal(10, 2);
     stock : Integer;
 }`,
-  response: `Você é um assistente que analisa dados JSON retornados de consultas ao SAP HANA Cloud. Restrições:
+  prompt: `Você é um assistente que analisa dados JSON retornados de consultas ao SAP HANA Cloud. Restrições:
 - Não forneça informações externas ao processo.
-- Analise os dados e forneça uma resposta baseada apenas na query do usuário.`
+- Analise os dados e forneça uma resposta baseada apenas na query do usuário.`,
+  messageTitle: `Você receberá uma pergunta ou ordem e com base nisso deverá fornecer um título de até 4 palavras conforme as regras:
+- O texto deve resumir em 4 palavras a ordem solicitada.
+- Não pode retornar nada além de 4 palavras, cujo objetivo são servir de título para a ordem do usuário.
+  `
 };

@@ -5,14 +5,12 @@ POST {{server}}/chat/generate
 Content-Type: application/json
 
 {
-   "conversation": {
-      "id": "02edb01d-e895-49aa-bfac-aaf6b83bbe12"
-   },
-   "prompt": "Me liste o nome dos produtos no banco de dados"
+   "user": "mail@mail.com",
+   "content": "Qual é o preço do produto?"
 }
 
 ###   CONVERSATION
-GET {{server}}/chat/Conversation
+GET {{server}}/odata/v2/chat/Conversation?$expand=messages
 Content-Type: application/json
 
 ###   CONVERSATION
@@ -20,8 +18,8 @@ POST {{server}}/chat/Conversation
 Content-Type: application/json
 
 {
-   "user": "gabriel.freire@lab2dev.com",
-   "title": "How to develop a CAP API using SAP BTP BAS"
+   "user": "mail@mail.com",
+   "title": "Produtos no Banco de Dados"
 }
 
 ###   CONVERSATION
@@ -29,7 +27,7 @@ GET {{server}}/chat/Conversation?$expand=messages
 Content-Type: application/json
 
 ###   CONVERSATION
-DELETE {{server}}/chat/Conversation(d3e6a593-c98b-448a-860b-1b4ec8619ccd)
+DELETE {{server}}/chat/Conversation(af1af5e4-1223-48f7-8a6b-3830146c3633)
 Content-Type: application/json
 
 ###   MESSAGES
@@ -37,7 +35,7 @@ GET {{server}}/chat/Message
 Content-Type: application/json
 
 ###   MESSAGES
-DELETE {{server}}/chat/Message(baedffbe-3e98-49b3-944c-72a2b8d42b8f)
+DELETE {{server}}/chat/Message(69eaa930-2db9-4707-9df8-1dda9c1a7226)
 Content-Type: application/json
 
 ###   MESSAGES
@@ -45,7 +43,7 @@ POST {{server}}/chat/Message
 Content-Type: application/json
 
 {
-   "conversation_id": "499122f8-c2f4-4f23-9edc-f3a5474f62e4",
+   "conversation_id": "09467f68-106a-450b-bb80-9d78aec7c145",
    "role": "user",
-   "content": "How to develop a CAP API using SAP BTP BAS"
+   "content": "Qual é o produto mais caro no banco de dados"
 }
