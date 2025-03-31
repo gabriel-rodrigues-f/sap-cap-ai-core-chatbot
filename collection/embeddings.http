@@ -4,6 +4,10 @@
 GET {{server}}/embeddings/DocumentChunk
 Content-Type: application/json
 
+###
+DELETE {{server}}/embeddings/DocumentChunk(da87cf66-8c11-4a99-bce8-34639233171d)
+Content-Type: application/json
+
 
 ###
 POST {{server}}/embeddings/generate

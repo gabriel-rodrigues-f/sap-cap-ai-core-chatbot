@@ -1,0 +1,66 @@
+@server = http://localhost:4004
+
+###   METADATA
+GET {{server}}/chat/$metadata
+Content-Type: application/json
+
+###   CHAT/START_CONVERSATION
+POST {{server}}/chat/startConversation
+Content-Type: application/json
+
+{
+   "user": "mail@mail.com",
+   "content": "Qual é o nome do produto no banco de dados?"
+}
+
+###   CHAT/SEND_MESSAGE
+POST {{server}}/chat/sendMessage
+Content-Type: application/json
+
+{
+   "conversationId": "f0dd00c0-35dc-4c12-a62a-7948b09ed463",
+   "content": "Qual é o nome do produto no banco de dados?"
+}
+
+###   CONVERSATION
+GET {{server}}/odata/v2/chat/Conversation
+Content-Type: application/json
+
+###   CONVERSATION
+GET {{server}}/odata/v2/chat/Conversation?$expand=messages
+Content-Type: application/json
+
+###   CONVERSATION
+POST {{server}}/chat/Conversation
+Content-Type: application/json
+
+{
+   "user": "mail@mail.com",
+   "title": "Produtos no Banco de Dados",
+}
+
+###   CONVERSATION
+GET {{server}}/chat/Conversation?$expand=messages
+Content-Type: application/json
+
+###   CONVERSATION
+DELETE {{server}}/chat/Conversation(2143ca25-90a3-4650-b077-2de6004be1cf)
+Content-Type: application/json
+
+###   MESSAGES
+GET {{server}}/chat/Message
+Content-Type: application/json
+
+###   MESSAGES
+DELETE {{server}}/chat/Message(69eaa930-2db9-4707-9df8-1dda9c1a7226)
+Content-Type: application/json
+
+###   MESSAGES
+POST {{server}}/chat/Message
+Content-Type: application/json
+
+{
+   "conversation_id": "09467f68-106a-450b-bb80-9d78aec7c145",
+   "role": "user",
+   "content": "Qual é o produto mais caro no banco de dados"
+}
