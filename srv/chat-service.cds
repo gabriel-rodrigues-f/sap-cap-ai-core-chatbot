@@ -7,11 +7,11 @@ service ChatService @(path: '/chat') {
 
     type ChatResponse {
         conversationId : UUID;
-        messageId      : UUID;
-        title          : String;
         content        : String;
-        timestamp      : String;
+        createdAt      : String;
+        role           : String;
     }
 
-    action generate(content : String, user : String) returns ChatResponse;
+    action startConversation(content : String, user : String)   returns ChatResponse;
+    action sendMessage(conversationId : UUID, content : String) returns ChatResponse;
 }

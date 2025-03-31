@@ -4,14 +4,27 @@
 GET {{server}}/chat/$metadata
 Content-Type: application/json
 
-###   CHAT/GENERATE
-POST {{server}}/chat/generate
+###   CHAT/START_CONVERSATION
+POST {{server}}/chat/startConversation
 Content-Type: application/json
 
 {
    "user": "mail@mail.com",
    "content": "Qual é o nome do produto no banco de dados?"
 }
+
+###   CHAT/SEND_MESSAGE
+POST {{server}}/chat/sendMessage
+Content-Type: application/json
+
+{
+   "conversationId": "f0dd00c0-35dc-4c12-a62a-7948b09ed463",
+   "content": "Qual é o nome do produto no banco de dados?"
+}
+
+###   CONVERSATION
+GET {{server}}/odata/v2/chat/Conversation
+Content-Type: application/json
 
 ###   CONVERSATION
 GET {{server}}/odata/v2/chat/Conversation?$expand=messages
@@ -23,7 +36,7 @@ Content-Type: application/json
 
 {
    "user": "mail@mail.com",
-   "title": "Produtos no Banco de Dados"
+   "title": "Produtos no Banco de Dados",
 }
 
 ###   CONVERSATION
@@ -31,7 +44,7 @@ GET {{server}}/chat/Conversation?$expand=messages
 Content-Type: application/json
 
 ###   CONVERSATION
-DELETE {{server}}/chat/Conversation(bf48a641-474c-47ec-b4f3-b2b3dc1af7a6)
+DELETE {{server}}/chat/Conversation(2143ca25-90a3-4650-b077-2de6004be1cf)
 Content-Type: application/json
 
 ###   MESSAGES
