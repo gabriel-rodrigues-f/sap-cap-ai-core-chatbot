@@ -70,7 +70,7 @@
       "GenAIHubDestination": {
         "kind": "rest",
         "credentials": {
-          "destination": "ai-core-destination-gabriel-marangoni",
+          "destination": "aicore-destination",
           "requestTimeout": "300000"
         }
       },

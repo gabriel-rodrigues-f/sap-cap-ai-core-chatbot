@@ -40,7 +40,7 @@ module.exports = function () {
             const assistantResponse = await repository.insertMessage({
                 conversation_id: conversationId,
                 role: ROLES_ENUM.ASSISTANT,
-                content: chatRAGResponseResult.completion.choices[0].message.content,
+                content: chatRAGResponseResult.completion.choices[0].message.content
             });
             await repository.updateConversation({ id: conversationId, data: { modifiedAt: timestamp } });
             _.res.status(201).json({
@@ -77,14 +77,14 @@ module.exports = function () {
             const assistantResponse = await repository.insertMessage({
                 conversation_id: conversationId,
                 role: ROLES_ENUM.ASSISTANT,
-                content: chatRAGResponseResult.completion.choices[0].message.content,
+                content: chatRAGResponseResult.completion.choices[0].message.content 
             });
             await repository.updateConversation({ id: conversationId, data: { modifiedAt: timestamp } });
             _.res.status(201).json({
                 conversationId,
                 createdAt: assistantResponse.results[0].values[3],
                 role: ROLES_ENUM.ASSISTANT,
-                content: chatRAGResponseResult.completion.choices[0].message.content,
+                content: chatRAGResponseResult.completion.choices[0].message.content
             });
         } catch (error) {
             console.error(error);

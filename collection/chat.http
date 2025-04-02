@@ -9,7 +9,7 @@ POST {{server}}/chat/startConversation
 Content-Type: application/json
 
 {
-   "user": "mail@mail.com",
+   "user": "other_mail@mail.com",
    "content": "Qual é o nome do produto no banco de dados?"
 }
 
@@ -27,7 +27,7 @@ GET {{server}}/odata/v2/chat/Conversation
 Content-Type: application/json
 
 ###   CONVERSATION
-GET {{server}}/odata/v2/chat/Conversation?$expand=messages
+GET {{server}}/odata/v2/chat/Conversation?$expand=messages&$filter=user eq 'mail@mail.com'
 Content-Type: application/json
 
 ###   CONVERSATION
@@ -36,7 +36,7 @@ Content-Type: application/json
 
 {
    "user": "mail@mail.com",
-   "title": "Produtos no Banco de Dados",
+   "title": "Total de Produtos"
 }
 
 ###   CONVERSATION
@@ -60,7 +60,7 @@ POST {{server}}/chat/Message
 Content-Type: application/json
 
 {
-   "conversation_id": "09467f68-106a-450b-bb80-9d78aec7c145",
+   "conversation_id": "aa040c88-22f9-49b7-a9e5-14ae75e02d5b",
    "role": "user",
    "content": "Qual é o produto mais caro no banco de dados"
 }
